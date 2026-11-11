@@ -1,0 +1,15 @@
+# Netdata Helm values for k3s homelab
+service:
+  type: NodePort
+  port: 19999
+  # nodePort not supported by chart; pinned with kubectl patch (see README)
+
+parent:
+  database:
+    volumesize: 5Gi   # local-path PVC can't be resized
+  alarms:
+    volumesize: 1Gi
+
+k8sState:
+  persistence:
+    volumesize: 1Gi
